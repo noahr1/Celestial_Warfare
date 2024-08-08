@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structure Concepts</title>
+    <style>
+        #sim {
+            width: 650px;
+            height: 650px;
+        }
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <canvas style="border: 1px solid black;" id="sim"></canvas>
+    <script>
+        var sim = document.getElementById("sim");
+        var ctx = sim.getContext("2d");
+        var tick = true;
+        var mousePosition = {
+            x: 0,
+            y: 0
+        }
+
+        var structures = [];
+
+        window.addEventListener("mousemove", (e) => {
+            const rect = sim.getBoundingClientRect();
+            // Update the global mousePosition variable with coordinates relative to the canvas
+            mousePosition.x = e.clientX - rect.left;
+            mousePosition.y = e.clientY - rect.top;
+        });
+
+        class Tank {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            draw() {
+                ctx.fillStyle = "gray";
+                ctx.fillRect(this.x, this.y, 10, 10);
+            }
+        }
+
+        class HoverTip {
+            constructor() {
+
+            }
+        }
+
+        function init() {
+            window.requestAnimationFrame(update);
+
+            sim.addEventListener("click", () => {
+                structures.push(new Tank(mousePosition.x - 5, mousePosition.y - 5));
+            });
+            sim.width = 650;
+            sim.height = 650;
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, sim.width, sim.height);
+            if(tick) {
+                window.requestAnimationFrame(update);
+            }
+
+            for(var structure of structures) {
+                structure.draw();
+            }
+
+            ctx.fillText("x:" + mousePosition.x + " y: " + mousePosition.y, 15, 15);
+
+        }
+
+
+        init();
+    </script>
+</body>
+</html>

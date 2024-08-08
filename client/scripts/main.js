@@ -1,5 +1,6 @@
 //imports
 
+
 //global variables
 let socket;
 
@@ -13,7 +14,7 @@ function setup() {
 
 //primary rendering
 function draw() {
-
+    p5.circle()
 }
 
 //server communication
