@@ -1,10 +1,15 @@
-//imports
+//Imports
 
 
-// structure
+//World Mechanics
+
+
+
+// Structure/Machines
 class Structure {
-    constructor() {
-
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
     }
     draw() {
         
@@ -12,7 +17,25 @@ class Structure {
 }
 
 class Weapon extends Structure {
-    constructor() {
-        super();
+    constructor(x, y) {
+        super(x, y);
+    }
+    draw(){
+        
+    }
+}
+
+class Movable {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+    }
+    update() {
+        let ax, ay;
+    }
+    draw() {
+        
     }
 }

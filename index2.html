@@ -3,82 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Structure Concepts</title>
-    <style>
-        #sim {
-            width: 650px;
-            height: 650px;
-        }
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <title>Celestial Battles Lobby</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas style="border: 1px solid black;" id="sim"></canvas>
-    <script>
-        var sim = document.getElementById("sim");
-        var ctx = sim.getContext("2d");
-        var tick = true;
-        var mousePosition = {
-            x: 0,
-            y: 0
-        }
+    <div id="lobby-container">
+        <div id="main-box">
+            <h1 id="select-room-title">Select Room</h1>
+            <div id="player-details">
+                <h2>Player Details</h2>
+                <input type="text" id="player-tag" placeholder="Enter Player Tag">
+            </div>
 
-        var structures = [];
+            <div id="lobby-list-container">
+                <div id="lobby-list-header">
+                    <button id="refresh-btn">Refresh</button>
+                    <button id="join-game-btn">Join Room</button>
+                </div>
+                <div id="lobby-list">
+                    <!-- Available lobbies will be listed here -->
+                </div>
+            </div>
 
-        window.addEventListener("mousemove", (e) => {
-            const rect = sim.getBoundingClientRect();
-            // Update the global mousePosition variable with coordinates relative to the canvas
-            mousePosition.x = e.clientX - rect.left;
-            mousePosition.y = e.clientY - rect.top;
-        });
+            <button id="create-game-btn">Create Room</button>
+        </div>
 
-        class Tank {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-            }
-            draw() {
-                ctx.fillStyle = "gray";
-                ctx.fillRect(this.x, this.y, 10, 10);
-            }
-        }
+        <!-- Join Room Popup -->
+        <div id="join-game-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Join Room</h2>
+                <input type="text" id="room-name" placeholder="Enter Room Name">
+                <div class="room-code-container">
+                    <input type="password" id="room-code-input" placeholder="Enter Room Code">
+                    <button id="toggle-visibility-btn" class="small-btn">👁️</button>
+                    <button id="generate-code-btn" class="small-btn">🔄</button> <!-- Generate Icon -->
+                    <button id="copy-code-btn" class="small-btn">📋</button> <!-- Copy Icon -->
+                </div>
+                <div class="popup-buttons">
+                    <button id="submit-code-btn">Join</button>
+                    <button class="close-popup">Cancel</button>
+                </div>
+            </div>
+        </div>
 
-        class HoverTip {
-            constructor() {
+        <!-- Create Room Popup -->
+        <div id="create-game-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Create a New Room</h2>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="room-settings">Room Settings</button>
+                    <button class="tab-button" data-tab="match-rules">Match Rules</button>
+                    <button class="tab-button" data-tab="world-settings">World Settings</button>
+                </div>
 
-            }
-        }
+                <div class="tab-content active" id="room-settings">
+                    <input type="text" id="room-name-input" placeholder="Room Name">
+                    <input type="number" id="max-players" placeholder="Max Players" min="2">
+                </div>
 
-        function init() {
-            window.requestAnimationFrame(update);
+                <div class="tab-content" id="match-rules">
+                    <!-- Match rules settings here -->
+                </div>
 
-            sim.addEventListener("click", () => {
-                structures.push(new Tank(mousePosition.x - 5, mousePosition.y - 5));
-            });
-            sim.width = 650;
-            sim.height = 650;
-        }
+                <div class="tab-content" id="world-settings">
+                    <!-- World settings here -->
+                </div>
 
-        function update() {
-            ctx.clearRect(0, 0, sim.width, sim.height);
-            if(tick) {
-                window.requestAnimationFrame(update);
-            }
+                <div class="popup-buttons">
+                    <button id="create-room-btn">Create Room</button>
+                    <button class="close-popup">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            for(var structure of structures) {
-                structure.draw();
-            }
-
-            ctx.fillText("x:" + mousePosition.x + " y: " + mousePosition.y, 15, 15);
-
-        }
-
-
-        init();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
