@@ -1,0 +1,145 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    box-sizing: border-box;
+}
+
+#room-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#main-box {
+    position: relative;
+    width: 75%;
+    height: 85%;
+    background-color: rgba(45, 45, 45, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#page-title {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    font-size: 2.5rem;
+    color: #e0e0e0;
+}
+
+#lower-content {
+    display: flex;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+    flex-grow: 1;
+    background-color: #2d2d2d;
+
+}
+
+#chat-container {
+    width: 75%;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+#chat-box {
+    height: 100%;
+    max-height: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#settings-buttons {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid #3d3d3d;
+}
+
+.settings-btn {
+    background-color: #1c1c1c;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+.message.left {
+    background-color: #3a3a3a;
+    margin-right: auto;
+}
+
+.message.right {
+    background-color: #0066cc;
+    margin-left: auto;
+}
+
+input[type="text"], input[type="number"], input[type="password"] {
+    width: 60%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+
+button {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3 ease;
+}
+
+button:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-btn {
+    width: 12%;
+}
+
+#ready-btn.ready {
+    background-color: #4caf50;
+}
+
+#ready-btn.not-ready {
+    background-color: #ff4d4d;
+}

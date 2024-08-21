@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Battles Lobby</title>
+    <link rel="stylesheet" href="./styles/lobby.css">
+</head>
+<body>
+    <div id="lobby-container">
+        <div id="main-box">
+            <h1 id="select-room-title">Select Room</h1>
+            <div id="player-details">
+                <h2>Player Details</h2>
+                <input type="text" id="player-tag" placeholder="Enter Player Tag">
+            </div>
+
+            <div id="lobby-list-container">
+                <div id="lobby-list-header">
+                    <button id="refresh-btn">Refresh</button>
+                    <button id="join-game-btn">Join Room</button>
+                </div>
+                <div id="lobby-list">
+                    <!-- Available lobbies will be listed here -->
+                </div>
+            </div>
+
+            <div class="footer-btns">
+                <button id="back-btn"><a href="../index.html">Back</a></button>
+                <button id="create-game-btn"><a href="./create-lobby.html">Create Room</a></button>
+            </div>
+        </div>
+
+        <!-- Join Room Popup -->
+        <div id="join-game-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Join Room</h2>
+                <input type="text" id="room-name" placeholder="Enter Room Name">
+                <input type="password" id="room-code-input" placeholder="Enter Room Code">
+                <div class="popup-buttons">
+                    <button id="submit-code-btn">Join</button>
+                    <button class="close-popup">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/lobby.js"></script>
+</body>
+</html>

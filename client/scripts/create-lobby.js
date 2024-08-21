@@ -1,44 +1,20 @@
-// Select elements
-const joinGameBtn = document.getElementById('join-game-btn');
-const createGameBtn = document.getElementById('create-game-btn');
-const joinGamePopup = document.getElementById('join-game-popup');
-const createGamePopup = document.getElementById('create-game-popup');
-const closePopupButtons = document.querySelectorAll('.close-popup');
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
+const createRoomBtn = document.getElementById('create-room-btn');
 const roomCodeInput = document.getElementById('room-code-input');
-const roomNameInput = document.getElementById('room-name');
+const roomNameInput = document.getElementById('room-name-input');
 const toggleVisibilityBtn = document.getElementById('toggle-visibility-btn');
 const generateCodeBtn = document.getElementById('generate-code-btn');
 const copyCodeBtn = document.getElementById('copy-code-btn');
 
-// Show Join Room Popup
-joinGameBtn.addEventListener('click', () => {
-    joinGamePopup.classList.remove('hidden');
-});
-
-// Show Create Room Popup
-createGameBtn.addEventListener('click', () => {
-    createGamePopup.classList.remove('hidden');
-});
-
-// Close popups
-closePopupButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        button.closest('.popup').classList.add('hidden');
-        roomCodeInput.value = "";
-        roomNameInput.value = "";
-    });
-});
-
-// Toggle tab content in Create Room Popup
+// Tab functionality
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all tabs and contents
+        // Remove 'active' class from all buttons and contents
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
 
-        // Add active class to clicked tab and corresponding content
+        // Add 'active' class to the clicked button and corresponding content
         button.classList.add('active');
         const tabId = button.getAttribute('data-tab');
         document.getElementById(tabId).classList.add('active');
@@ -70,3 +46,25 @@ copyCodeBtn.addEventListener('click', () => {
             // Optionally, display an error message to the user
         });
 });
+
+// Collect data and store it in a variable when creating a room
+createRoomBtn.addEventListener('click', () => {
+    const roomData = {
+        roomSettings: {
+            roomName: roomNameInput.value,
+            roomCode: roomCodeInput.value,
+            maxPlayers: document.getElementById('max-players').value
+        },
+        matchRules: {
+            
+        }, 
+        worldSettings: {
+
+        } 
+    };
+
+    // Placeholder for actual room creation logic
+    console.log(roomData);
+    alert('Room Created with Name: ' + roomData.roomSettings.roomName);
+});
+

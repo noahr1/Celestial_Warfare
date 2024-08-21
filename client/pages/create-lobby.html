@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Room - Celestial Battles</title>
+    <link rel="stylesheet" href="./styles/create-lobby.css">
+</head>
+<body>
+    <div id="create-room-container">
+        <div id="main-box">
+            <h1 id="create-room-title">Create a New Room</h1>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="room-settings">Room Settings</button>
+                <button class="tab-button" data-tab="match-rules">Match Rules</button>
+                <button class="tab-button" data-tab="world-settings">World Settings</button>
+            </div>
+            <div class="tab-content active" id="room-settings">
+                <div class="centered-inputs">
+                    <!-- Room settings here -->
+                    <input type="text" id="room-name-input" placeholder="Room Name">
+                    <input type="number" id="max-players" placeholder="Max Players" min="2">
+                    <div class="room-code-container">
+                    <input type="password" id="room-code-input" placeholder="Enter Room Code">
+                    <button id="toggle-visibility-btn" class="small-btn">👁️</button>
+                    <button id="generate-code-btn" class="small-btn">🔄</button> <!-- Generate Icon -->
+                    <button id="copy-code-btn" class="small-btn">📋</button> <!-- Copy Icon -->
+                </div>
+                </div>
+            </div>
+            <div class="tab-content" id="match-rules">
+                <div class="centered-inputs">
+                    <!-- Match rules settings here -->
+                    
+                </div>
+            </div>
+            <div class="tab-content" id="world-settings">
+                <div class="centered-inputs">
+                    <!-- World settings here -->
+                    
+                </div>
+            </div>
+            <div class="footer-btns">
+                <button id="cancel-btn" class="close-popup footer-btn"><a href="./lobby.html">Cancel</a></button>
+                <button id="create-room-btn" class="footer-btn">Create Room</button>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/create-lobby.js"></script>
+</body>
+</html>

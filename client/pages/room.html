@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Page</title>
+    <link rel="stylesheet" href="./styles/room.css">
+</head>
+<body>
+    <div id="room-container">
+        <div id="main-box">
+            <h1 id="page-title">Room</h1>
+            <!-- Top Section: Player List -->
+            <div id="player-list">
+                <h2>Players in Room</h2>
+                <ul id="players">
+                    <!-- Player data will be dynamically inserted here -->
+                    <li>Player 1 (Waiting)</li>
+                    <li>Player 2 (Ready)</li>
+                    <li>Player 3 (Waiting)</li>
+                    <!-- More players... -->
+                </ul>
+            </div>
+
+            <div id="lower-content">
+                <!-- Chat Box -->
+                <div id="chat-container">
+                    <div id="chat-box">
+                        <div class="message left">Hello! Anyone ready?</div>
+                        <div class="message right">Yeah, I'm ready!</div>
+                        <!-- More messages... -->
+                    </div>
+                    <div>
+                        <input type="text" id="chat-input" placeholder="Type your message...">
+                        <button id="send-message-btn">Send</button>
+                    </div>
+                </div>
+
+                <!-- Settings Buttons -->
+                <div id="settings-buttons">
+                    <button class="settings-btn">Match Rules</button>
+                    <button class="settings-btn">World Settings</button>
+                    <button class="settings-btn">Room Settings</button>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Leave and Ready Buttons -->
+            <div class="footer-btns">
+                <button id="leave-btn" class="footer-btn"><a href="./lobby.html">Leave Room</a></button>
+                <button id="ready-btn" class="footer-btn not-ready">Not Ready</button>
+            </div>
+       </div>
+    </div>
+    <script src="../scripts/room.js"></script>
+</body>
+</html>

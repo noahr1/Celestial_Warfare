@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <link rel="stylesheet" href="./styles/game.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="upper-canvas-container">
+            <div id="p5-canvas"></div>
+            <div id="minimap-box">
+                <div id="resize-handle"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        
+        <div id="bottom-section">
+            <div id="tabs-container">
+                <div id="tabs">
+                    <button class="tab-button active" data-tab="weapons">Weapons</button>
+                    <button class="tab-button" data-tab="assembly">Assembly</button>
+                    <button class="tab-button" data-tab="logistics">Logistics</button>
+                    <button class="tab-button" data-tab="automation">Automation</button>
+                    <button class="tab-button" data-tab="collection">Collection</button>
+                </div>
+            </div>
+            <div class="bar-content active" id="weapons">
+                <div class="tool-box">My life</div>
+            </div>
+            <div class="bar-content" id="assembly">
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+            </div>
+            <div class="bar-content" id="logistics">
+                <div class="tool-box">My life</div>
+            </div>
+            <div class="bar-content" id="automation">
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+            </div>
+            <div class="bar-content" id="collection">
+                <div class="tool-box">My life</div>
+                <div class="tool-box">My life</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+    <script type="module" src="../scripts/game.js"></script>
+</body>
+</html>
