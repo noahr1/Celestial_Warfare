@@ -15,10 +15,9 @@ const world = {
 let selected;
 let isResizing = false;
 
-const sketch = (p) => {
+const game = (p) => {
     p.setup = () => {
         game_render = p.createCanvas(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
-        p.saveCanvas(game_render, "map.png");
     }
 
     p.draw = () => {
@@ -32,7 +31,7 @@ const sketch = (p) => {
         //draw world
         p.fill("blue");
         p.rect(15, 15, 15, 15);
-        drawMinimap();
+        //drawLaser();
         p.pop(); // Reset translation
     }
 
@@ -59,22 +58,17 @@ const sketch = (p) => {
         cameraX = p.constrain(cameraX, 0, world.width - p.width);
         cameraY = p.constrain(cameraY, 0, world.height - p.height);
     });
+}
 
-    function drawMinimap() {
-        var minimap_x = (cameraX / world.width) * minimapBox.getBoundingClientRect().width;
-        var minimap_y = (cameraY / world.height) * minimapBox.getBoundingClientRect().height;
-        var minimap_w = (canvasContainer.offsetWidth / world.width) * minimapBox.getBoundingClientRect().width;
-        var minimap_h = (canvasContainer.offsetHeight / world.height) * minimapBox.getBoundingClientRect().height;
-        minimap_w = minimap_w.toFixed(2);
-        minimap_h = minimap_h.toFixed(2);
-        
-        p.push();
-        p.translate(cameraX, cameraY);
+const map = (p) => {
+    p.setup = () => {
 
-        p.noFill();
-        p.rect(minimap_x + minimapBox.getBoundingClientRect().left, minimap_y + minimapBox.getBoundingClientRect().top, minimap_w, minimap_h);
-
-        p.pop();
+    }
+    p.draw = () => {
+        p.image(game_render, 0, 0, p.width, p.height);
+    }
+    p.windowResized = () => {
+        p.resizeCanvas(minimapBox.offsetWidth, minimapBox.offsetHeight);
     }
 }
 
@@ -118,4 +112,5 @@ document.addEventListener('mousemove', function (e) {
     }
 });
 
-new p5(sketch, canvasContainer);
+new p5(game, canvasContainer);
+new p5(map, minimapBox);

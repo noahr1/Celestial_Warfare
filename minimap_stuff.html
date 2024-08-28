@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+</head>
+<body>
+    <script>
+        let mapGraphics;
+        let mapSize = 5000;
+        let canvasSize = 800;
+        let offsetX = 0;
+        let offsetY = 0;
+        let moveSpeed = 5;
+        let toggled = false;
+
+        function setup() {
+            createCanvas(canvasSize, canvasSize);
+            mapGraphics = createGraphics(mapSize, mapSize);
+  
+            // Example drawing on the map
+            mapGraphics.background(0);
+            mapGraphics.fill(255, 0, 0);
+            mapGraphics.ellipse(mapSize / 2, mapSize / 2, 100, 100);
+        }
+
+        function draw() {
+            background(220);
+  
+            // Handle movement
+            if (keyIsDown(LEFT_ARROW)) offsetX -= moveSpeed;
+            if (keyIsDown(RIGHT_ARROW)) offsetX += moveSpeed;
+            if (keyIsDown(UP_ARROW)) offsetY -= moveSpeed;
+            if (keyIsDown(DOWN_ARROW)) offsetY += moveSpeed;
+  
+            offsetX = constrain(offsetX, 0, mapSize - canvasSize);
+            offsetY = constrain(offsetY, 0, mapSize - canvasSize);
+
+            if(toggled) {
+                displayFullMap();
+            }
+  
+            // Draw the main canvas with the offset
+            image(mapGraphics, -offsetX, -offsetY, mapSize, mapSize);
+  
+            // Draw the minimap
+            displayMinimap();
+        }
+
+        function displayMinimap() {
+            let minimapSize = 200;
+            let minimapScale = minimapSize / mapSize;
+  
+            // Display the minimap in the bottom left corner
+            image(mapGraphics, 0, height - minimapSize, minimapSize, minimapSize);
+  
+            // Draw the viewport rectangle on the minimap
+            noFill();
+            stroke(255);
+            rect(0, height - minimapSize, minimapSize, minimapSize);
+            rect(0, height - minimapSize, minimapSize * canvasSize / mapSize, minimapSize * canvasSize / mapSize);
+        }
+
+        function keyPressed() {
+            if (key === 'M') {
+                toggled = !toggled;
+            }
+        }
+
+        function displayFullMap() {
+            background(0);
+  
+            // Draw the full map
+            image(mapGraphics, 0, 0, width, height);
+        }
+    </script>
+</body>
+</html>
